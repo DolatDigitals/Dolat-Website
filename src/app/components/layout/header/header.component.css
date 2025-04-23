@@ -1,0 +1,210 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 1rem 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  text-decoration: none;
+  display: flex;
+  color: rgb(0, 0, 0);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo-text {
+  background: linear-gradient(90deg, rgb(37, 99, 235), rgb(37, 99, 235));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2.5rem;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: #999;
+  font-weight: 500;
+  font-size: 1.05rem;
+  transition: color 0.3s;
+  padding: 0.5rem 0;
+}
+
+.nav-item a:hover, .nav-item a.active {
+  color:rgb(37, 99, 235);
+}
+
+.nav-item a.active {
+  font-weight: 600;
+  color: rgb(37, 99, 235);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.btn-contact {
+  display: inline-block;
+  background: linear-gradient(90deg, #2563eb 0%, #348efc 100%);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.65rem 1.7rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: transform 0.3s ease-out,
+  box-shadow 0.3s ease-out,
+  background 0.3s ease-out,
+  color 0.25s ease-out;
+}
+
+.btn-contact:hover, .btn-contact:focus {
+  transform: translateY(-3px) scale(1.045);
+  box-shadow: 0 6px 18px 0 rgba(37,99,235,0.18);
+  background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
+  color: #eaf3ff;
+}
+
+.theme-switch {
+  --color: #a5a5b0;
+  --size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--size);
+  -webkit-user-select: none;
+  user-select: none;
+  fill: var(--color);
+}
+
+.theme-switch .moon {
+  position: absolute;
+  animation: keyframes-fill .5s;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+.theme-switch .sun {
+  position: absolute;
+  display: none;
+  animation: keyframes-fill .5s;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 0, 0.3));
+}
+
+/* ------ On check event ------ */
+.theme-switch input:checked ~ .moon {
+  display: none;
+}
+
+.theme-switch input:checked ~ .sun {
+  display: block;
+}
+
+/* ------ Hide the default checkbox ------ */
+.theme-switch input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* ------ Animation ------ */
+@keyframes keyframes-fill {
+  0% {
+    transform: rotate(-360deg) scale(0);
+    opacity: 0;
+  }
+
+  75% {
+    transform: rotate(25deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+  
+  .header-actions {
+    display: none;
+  }
+}
+
+/* Dark mode overrides for header elements */
+:host-context(body.dark-mode) .header {
+  background-color: rgba(30, 30, 30, 0.85);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+:host-context(body.dark-mode) .logo a {
+  color: #f5f5f5;
+}
+
+:host-context(body.dark-mode) .nav-item a {
+  color: #ccc;
+}
+
+:host-context(body.dark-mode) .nav-item a:hover {
+  color: #f5f5f5;
+}
+
+:host-context(body.dark-mode) .nav-item a.active {
+  color: rgb(59, 130, 246);
+}
+
+:host-context(body.dark-mode) .btn-contact {
+  background-color: rgb(59, 130, 246);
+}
+
+/* Dark mode styles for the toggle */
+body.dark-mode .theme-switch {
+  --color: #ffffff;
+}
+
+body.dark-mode .theme-switch .moon {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+body.dark-mode .theme-switch .sun {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 0, 0.5));
+  color: #ffd700;
+}
