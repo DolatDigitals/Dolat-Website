@@ -24,6 +24,7 @@
 .highlight {
   background: linear-gradient(90deg, rgb(37, 99, 235), rgb(37, 99, 235));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -186,6 +187,433 @@
 .btn-primary:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Threaded zigzag process flow */
+.process-thread {
+  margin: 3rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.thread-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  min-height: 110px;
+  position: relative;
+}
+
+.thread-step {
+  flex: 1 1 320px;
+  min-width: 260px;
+  max-width: 400px;
+  background: #f8f9fa;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 18px 0 rgba(37,99,235,0.07);
+  padding: 1.2rem 1.8rem;
+  margin: 0 0.5rem;
+  display: flex;
+  align-items: center;
+  transition: box-shadow 0.3s, transform 0.3s;
+  position: relative;
+  z-index: 2;
+}
+
+.thread-step-left {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.thread-step-right {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.thread-step.empty {
+  background: transparent;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.thread-step .step-icon {
+  width: 2.7rem;
+  height: 2.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #e0e7ff 60%, #c7d2fe 100%);
+  color: #2563eb;
+  border-radius: 50%;
+  margin-right: 1rem;
+  margin-left: 0;
+  box-shadow: 0 1px 6px 0 rgba(37,99,235,0.07);
+}
+
+.thread-step-left .step-icon {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+
+.thread-step-right .step-icon {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+.thread-step .step-content h4 {
+  font-size: 1.13rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem 0;
+  color: #1a1a1a;
+}
+
+.thread-step .step-content p {
+  font-size: 0.97rem;
+  color: #666;
+  margin: 0;
+}
+
+.thread-connector {
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.thread-dot {
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, #2563eb 60%, #60a5fa 100%);
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px 0 rgba(37,99,235,0.13);
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.thread-line {
+  width: 4px;
+  height: 100%;
+  min-height: 60px;
+  background: linear-gradient(180deg, #c7d2fe 60%, #e0e7ff 100%);
+  margin: 0 auto;
+  z-index: 1;
+  border-radius: 3px;
+}
+
+.thread-row:last-child .thread-line {
+  display: none;
+}
+
+.step-icon.more-round {
+  background: linear-gradient(135deg, #2563eb 60%, #60a5fa 100%);
+  color: #fff;
+  border-radius: 50%;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: 0 4px 16px 0 rgba(37,99,235,0.13);
+  margin: 0 0.5rem;
+}
+
+.align-right {
+  text-align: right;
+  flex: 1;
+  padding-right: 0.5rem;
+}
+
+.align-left {
+  text-align: left;
+  flex: 1;
+  padding-left: 0.5rem;
+}
+
+/* Remove default icon margins for more precise alignment */
+.thread-step-left .step-icon.more-round {
+  margin-left: 0.7rem;
+  margin-right: 0;
+}
+.thread-step-right .step-icon.more-round {
+  margin-right: 0.7rem;
+  margin-left: 0;
+}
+
+/* Responsive adjustments for process thread */
+@media (max-width: 900px) {
+  .thread-step {
+    min-width: 180px;
+    padding: 0.9rem 0.7rem;
+  }
+  .step-icon.more-round {
+    width: 2.3rem;
+    height: 2.3rem;
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .thread-step {
+    min-width: 0;
+    max-width: 100%;
+    padding: 1rem 0.7rem;
+    font-size: 0.97rem;
+  }
+  .thread-row {
+    min-height: 80px;
+  }
+  .thread-connector {
+    width: 35px;
+  }
+}
+
+@media (max-width: 650px) {
+  .process-thread {
+    margin: 1.2rem 0 0 0;
+  }
+  .thread-row {
+    flex-direction: column;
+    min-height: 0;
+    align-items: stretch;
+  }
+  .thread-step, .thread-step-left, .thread-step-right {
+    margin: 0.5rem 0;
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  .thread-connector {
+    flex-direction: row;
+    height: 40px;
+    width: 100%;
+    margin: 0.2rem 0;
+  }
+  .thread-line {
+    width: 100%;
+    height: 4px;
+    min-height: 0;
+    background: linear-gradient(90deg, #c7d2fe 60%, #e0e7ff 100%);
+    border-radius: 3px;
+  }
+  .thread-dot {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Only animate when in-view */
+.process-section:not(.in-view) .thread-row,
+.process-section:not(.in-view) .step-icon.more-round,
+.process-section:not(.in-view) .thread-dot {
+  opacity: 0;
+  transform: none;
+  animation: none !important;
+}
+
+.process-section.in-view .thread-row {
+  animation: fadeInUp 0.85s cubic-bezier(.23,1.01,.32,1) both;
+  animation-delay: var(--thread-delay, 0s);
+}
+.process-section.in-view .step-icon.more-round {
+  animation: popIn 0.7s cubic-bezier(.23,1.01,.32,1) both;
+  animation-delay: var(--icon-delay, 0s);
+}
+.process-section.in-view .thread-dot {
+  animation: popIn 0.5s cubic-bezier(.23,1.01,.32,1) both;
+  animation-delay: var(--dot-delay, 0s);
+}
+
+/* Animations for process thread */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+  }
+  60% {
+    opacity: 0.7;
+    transform: translateY(-8px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Staggered delays for each row/icon/dot (up to 6 steps) */
+.process-thread .thread-row:nth-child(1) { --thread-delay: 0.05s; }
+.process-thread .thread-row:nth-child(2) { --thread-delay: 0.18s; }
+.process-thread .thread-row:nth-child(3) { --thread-delay: 0.32s; }
+.process-thread .thread-row:nth-child(4) { --thread-delay: 0.46s; }
+.process-thread .thread-row:nth-child(5) { --thread-delay: 0.6s; }
+.process-thread .thread-row:nth-child(6) { --thread-delay: 0.74s; }
+
+.process-thread .thread-row:nth-child(1) .step-icon.more-round { --icon-delay: 0.15s; }
+.process-thread .thread-row:nth-child(2) .step-icon.more-round { --icon-delay: 0.28s; }
+.process-thread .thread-row:nth-child(3) .step-icon.more-round { --icon-delay: 0.42s; }
+.process-thread .thread-row:nth-child(4) .step-icon.more-round { --icon-delay: 0.56s; }
+.process-thread .thread-row:nth-child(5) .step-icon.more-round { --icon-delay: 0.7s; }
+.process-thread .thread-row:nth-child(6) .step-icon.more-round { --icon-delay: 0.84s; }
+
+.process-thread .thread-row:nth-child(1) .thread-dot { --dot-delay: 0.23s; }
+.process-thread .thread-row:nth-child(2) .thread-dot { --dot-delay: 0.36s; }
+.process-thread .thread-row:nth-child(3) .thread-dot { --dot-delay: 0.5s; }
+.process-thread .thread-row:nth-child(4) .thread-dot { --dot-delay: 0.64s; }
+.process-thread .thread-row:nth-child(5) .thread-dot { --dot-delay: 0.78s; }
+.process-thread .thread-row:nth-child(6) .thread-dot { --dot-delay: 0.92s; }
+
+/* Tree-like process flow styles */
+.process-tree {
+  margin: 2.5rem 0 0 2.2rem;
+  position: relative;
+}
+
+.tree-node {
+  position: relative;
+  margin-left: 2.2rem;
+}
+
+.tree-step {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 18px 0 rgba(37,99,235,0.07);
+  padding: 1.2rem 1.8rem;
+  min-width: 280px;
+  max-width: 420px;
+  margin-bottom: 0.2rem;
+  position: relative;
+  z-index: 2;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.tree-step:hover {
+  box-shadow: 0 8px 32px 0 rgba(37,99,235,0.16);
+  transform: translateY(-4px) scale(1.025);
+}
+
+.tree-step .step-icon {
+  width: 2.7rem;
+  height: 2.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #e0e7ff 60%, #c7d2fe 100%);
+  color: #2563eb;
+  border-radius: 50%;
+  margin-right: 1rem;
+  margin-left: -0.7rem;
+  box-shadow: 0 1px 6px 0 rgba(37,99,235,0.07);
+}
+
+.tree-step-hero {
+  background: linear-gradient(90deg, #e0e7ff 70%, #f8f9fa 100%);
+  border: 2px solid #2563eb22;
+}
+
+.tree-step-final {
+  background: linear-gradient(90deg, #f8f9fa 80%, #e0e7ff 100%);
+  border: 2px solid #60a5fa33;
+}
+
+.tree-step .step-number {
+  background: linear-gradient(90deg, #2563eb 60%, #60a5fa 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1.2rem;
+  margin-left: 0.2rem;
+  box-shadow: 0 2px 8px 0 rgba(37,99,235,0.13);
+  border: 2px solid #fff;
+}
+
+.process-tree-animated .tree-step {
+  opacity: 0;
+  transform: translateY(15px) scale(0.98);
+  animation: treeStepFadeIn 0.7s cubic-bezier(.4,0,.2,1) forwards;
+}
+
+.process-tree-animated .tree-node:nth-child(1) > .tree-step { animation-delay: 0.1s; }
+.process-tree-animated .tree-node:nth-child(2) > .tree-step { animation-delay: 0.25s; }
+.process-tree-animated .tree-node:nth-child(3) > .tree-step { animation-delay: 0.4s; }
+.process-tree-animated .tree-node:nth-child(4) > .tree-step { animation-delay: 0.55s; }
+.process-tree-animated .tree-node:nth-child(5) > .tree-step { animation-delay: 0.7s; }
+.process-tree-animated .tree-node:nth-child(6) > .tree-step { animation-delay: 0.85s; }
+
+@keyframes treeStepFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.tree-branch {
+  position: absolute;
+  left: 1.2rem;
+  top: 2.6rem;
+  width: 2px;
+  height: calc(100% - 2.6rem);
+  background: linear-gradient(#c7d2fe 60%, #e0e7ff 100%);
+  z-index: 1;
+}
+
+.tree-node:last-child > .tree-branch {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .process-tree {
+    margin: 1.2rem 0 0 0.7rem;
+  }
+  .tree-node, .tree-step {
+    margin-left: 0.7rem;
+    min-width: 0;
+    max-width: 100%;
+    padding: 1rem 0.7rem;
+  }
+  .tree-step {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+  .tree-step .step-number {
+    margin-bottom: 0.5rem;
+    margin-right: 0;
+  }
 }
 
 @media (max-width: 768px) {
