@@ -24,6 +24,7 @@
 .highlight {
   background: rgb(37, 99, 235);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -88,6 +89,7 @@
   font-weight: 700;
   background: rgb(37, 99, 235);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.5rem;
 }
@@ -164,11 +166,16 @@
 
 .paper-effect {
   perspective: 1000px;
-  transition: box-shadow 0.3s cubic-bezier(.22,1,.36,1), transform 0.3s cubic-bezier(.22,1,.36,1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   will-change: transform, box-shadow;
-  box-shadow: 0 6px 32px 0 rgba(37,99,235,0.10), 0 1.5px 8px 0 rgba(30,64,175,0.04);
+  box-shadow: 0 6px 32px rgba(37, 99, 235, 0.1), 0 1.5px 8px rgba(30, 64, 175, 0.04);
   border-radius: 1.2rem;
   overflow: hidden;
+}
+
+.paper-effect:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.2), 0 4px 16px rgba(30, 64, 175, 0.08);
 }
 
 .paper-effect img {
@@ -177,7 +184,11 @@
   height: auto;
   border-radius: 1.2rem;
   box-shadow: 0 2px 8px 0 rgba(37,99,235,0.07);
-  transition: box-shadow 0.3s cubic-bezier(.22,1,.36,1);
+  transition: box-shadow 0.4s ease;
+}
+
+.paper-effect:hover img {
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.15);
 }
 
 @media (max-width: 992px) {

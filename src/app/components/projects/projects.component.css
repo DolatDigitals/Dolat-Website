@@ -1,6 +1,6 @@
 .projects {
   padding: 6rem 0;
-  background-color: #f8f9fa;
+  background-color: #ffffff;
 }
 
 .container {
@@ -196,7 +196,7 @@
   background: linear-gradient(90deg, rgb(37, 99, 235), rgb(37, 99, 235));
   color: white;
   padding: 0.75rem 1.5rem;
-  border-radius: 4px;
+  border-radius: 50px;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s;
@@ -212,7 +212,7 @@
   background: white;
   color: rgb(37, 99, 235);
   padding: 0.75rem 1.5rem;
-  border-radius: 4px;
+  border-radius: 50px;
   text-decoration: none;
   font-weight: 500;
   border: 1px solid #e0e0e0;
