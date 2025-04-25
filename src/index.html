@@ -15,41 +15,23 @@
   <meta property="og:url" content="https://dolatdigital.com/">
   <meta property="og:image" content="https://dolatdigital.com/assets/og-image.jpg">
   <script>
-    // Immediately apply theme on page load to prevent flash of incorrect theme
+    // Initialize light theme styling
     (function() {
-      var savedTheme = localStorage.getItem('theme');
-      var shouldUseDarkMode = savedTheme === 'dark' || (!savedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches);
+      // Apply light mode
+      document.documentElement.classList.add('light-mode');
+      document.documentElement.setAttribute('data-theme', 'light');
+      document.documentElement.style.backgroundColor = '#ffffff';
+      document.documentElement.style.colorScheme = 'light';
       
-      if (shouldUseDarkMode) {
-        // Apply dark mode to both documentElement and body
-        document.documentElement.classList.add('dark-mode');
-        document.documentElement.setAttribute('data-theme', 'dark');
-        document.documentElement.style.backgroundColor = '#000000';
-        document.documentElement.style.colorScheme = 'dark';
-        
-        // Set a flag for immediate styling before components load
-        document.documentElement.style.setProperty('--theme-mode', 'dark');
-      } else {
-        // Apply light mode to both documentElement and body
-        document.documentElement.classList.add('light-mode');
-        document.documentElement.setAttribute('data-theme', 'light');
-        document.documentElement.style.backgroundColor = '#ffffff';
-        document.documentElement.style.colorScheme = 'light';
-        
-        // Set a flag for immediate styling before components load
-        document.documentElement.style.setProperty('--theme-mode', 'light');
-      }
+      // Set a flag for immediate styling before components load
+      document.documentElement.style.setProperty('--theme-mode', 'light');
       
       // Inject a style tag to apply theme immediately, before any component code runs
       var style = document.createElement('style');
       style.textContent = 
-        'html[data-theme="dark"] { background-color: #000000 !important; color: #ffffff !important; transition: none !important; }' +
-        'html[data-theme="dark"] app-root, html[data-theme="dark"] app-hero { background-color: #000000 !important; color: #ffffff !important; transition: none !important; }' +
-        'html[data-theme="light"] { background-color: #ffffff !important; color: #333333 !important; transition: none !important; }' +
-        'html[data-theme="light"] app-root, html[data-theme="light"] app-hero { background-color: #ffffff !important; color: #333333 !important; transition: none !important; }' +
-        /* Only disable transitions for theme-related properties */
-        '*, *::before, *::after { transition-property: background-color, color, border-color, fill, stroke !important; transition-duration: 0s !important; }' +
-        /* But keep animations for UI interactions */
+        'html { background-color: #ffffff !important; color: #333333 !important; }' +
+        'app-root, app-hero { background-color: #ffffff !important; color: #333333 !important; }' +
+        /* Keep animations for UI interactions */
         'a:hover, button:hover, .btn-primary, .btn-secondary, [class*="card"]:hover { transition: transform 0.3s ease, box-shadow 0.3s ease !important; }';
       document.head.appendChild(style);
     })();
