@@ -289,6 +289,64 @@ h1 {
   letter-spacing: 0.01em;
 }
 
+/* Students Helped Section */
+.students-helped {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatars img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-left: -12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.students-rating-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 1rem;
+}
+
+.students-rating-text {
+  display: flex;
+  align-items: center;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.3rem;
+  margin-left: 4.5px;
+}
+
+.star-icon {
+  width: auto;
+  height: 18px;
+  margin: 0 2px;
+  display: inline-block;
+}
+
+.students-count {
+  font-weight: bold;
+  color: #2563eb;
+  margin-left: 0.5rem;
+}
+
+.students-text {
+  color: #555;
+  margin-left: 0.3rem;
+}
+
 @media (max-width: 900px) {
   .hero {
     padding: 6rem 0 3rem;
