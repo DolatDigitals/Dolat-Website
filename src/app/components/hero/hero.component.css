@@ -265,17 +265,18 @@ h1 {
   border: 1.2px solid #b6d2fa;
   color: #183b6b;
   border-radius: 50px;
-  padding: 0.18rem 0.7rem 0.18rem 0.6rem;
+  padding: 0.18rem 1.2rem 0.18rem 1.1rem;
   font-size: 0.93rem;
   font-weight: 500;
   margin-bottom: 0.7rem;
   box-shadow: 0 1px 3px 0 rgba(30,64,175,0.02);
   transition: box-shadow 0.2s, border 0.2s;
+  min-width: 230px;
 }
 
 .hero-badge-icon {
-  width: 1.05em;
-  height: 1.05em;
+  width: 16px;
+  height: 16px;
   vertical-align: middle;
   stroke: #234;
   stroke-width: 2;
