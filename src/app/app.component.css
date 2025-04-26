@@ -1,0 +1,9 @@
+main {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1; /* Ensure it's not hidden behind other elements */
+}
+
+/* Any other existing styles would go here */

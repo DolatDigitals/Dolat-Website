@@ -118,6 +118,44 @@
 
 .why-choose-us {
   margin-top: 15rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background pattern and gradient effects */
+.why-choose-us::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  height: 100%;
+  width: 100%;
+  background-image: 
+    linear-gradient(to right, rgba(128, 128, 128, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(128, 128, 128, 0.04) 1px, transparent 1px);
+  background-size: 14px 24px;
+}
+
+.why-choose-us::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: -10;
+  margin: auto;
+  height: 310px;
+  width: 310px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.2);
+  opacity: 0.2;
+  filter: blur(100px);
+  animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.1; transform: scale(0.95); }
+  100% { opacity: 0.3; transform: scale(1.05); }
 }
 
 .why-choose-us .hero-badge {
@@ -127,6 +165,29 @@
   margin-left: auto;
   margin-right: auto;
   width: max-content;
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  color: rgb(37, 99, 235);
+  border-radius: 50px;
+  padding: 0.25rem 1rem;
+  font-size: 0.93rem;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-badge-icon {
+  color: rgb(37, 99, 235);
+}
+
+.hero-badge-text {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: rgb(37, 99, 235);
 }
 
 .subsection-title {
@@ -140,120 +201,20 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
+  animation: gradientFlow 5s ease infinite, fadeSlideUp 0.8s ease-out forwards;
+  opacity: 0;
 }
 
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
-.feature-card {
-  background-color: #f8f9fa;
-  padding: 2rem;
-  border-radius: 8px;
-  transition: transform 0.3s, box-shadow 0.3s;
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.feature-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.feature-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.feature-card h4 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #1a1a1a;
-}
-
-.feature-card p {
-  font-size: 1rem;
-  color: #666;
-  line-height: 1.5;
-}
-
-.paper-effect {
-  perspective: 1000px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  will-change: transform, box-shadow;
-  box-shadow: 0 6px 32px rgba(37, 99, 235, 0.1), 0 1.5px 8px rgba(30, 64, 175, 0.04);
-  border-radius: 1.2rem;
-  overflow: hidden;
-}
-
-.paper-effect:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.2), 0 4px 16px rgba(30, 64, 175, 0.08);
-}
-
-.paper-effect img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 1.2rem;
-  box-shadow: 0 2px 8px 0 rgba(37,99,235,0.07);
-  transition: box-shadow 0.4s ease;
-}
-
-.paper-effect:hover img {
-  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.15);
-}
-
-/* More appealing about title */
-.about-title-appeal {
-  font-weight: 900;
-  letter-spacing: 0px;
-  background: linear-gradient(to right, #111827, rgb(37, 99, 235), #111827);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-fill-color: transparent;
-  text-shadow: 2px 4px 10px rgba(37,99,235,0.08), 0 2px 6px rgba(0,0,0,0.08);
-  padding-bottom: 0.3rem;
-  font-size: 3.2rem;
-}
-
-.about-title-italic {
-  font-style: italic;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.33rem;
-  background: #f5f8fd;
-  border: 1.2px solid #b6d2fa;
-  color: #183b6b;
-  border-radius: 50px;
-  padding: 0.18rem 0.7rem 0.18rem 0.6rem;
-  font-size: 0.93rem;
-  font-weight: 500;
-  margin-bottom: 0.7rem;
-  box-shadow: 0 1px 3px 0 rgba(30,64,175,0.02);
-  transition: box-shadow 0.2s, border 0.2s;
-}
-
-.hero-badge-icon {
-  width: 1.05em;
-  height: 1.05em;
-  vertical-align: middle;
-  stroke: #234;
-  stroke-width: 2;
-  margin-right: 0.18rem;
-}
-
-.hero-badge-text {
-  color: #183b6b;
-  font-weight: 500;
-}
-
-/* --- New Features Grid (Image Inspired) --- */
 .new-features-grid,
 .new-features-grid--secondary {
   max-width: 1200px;
@@ -278,6 +239,7 @@
   align-items: start;
 }
 
+/* Main feature cards (top row) */
 .feature-card--main {
   background: rgba(37,99,235,0.03);
   border: 2px solid #dbeafe;
@@ -290,29 +252,58 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  transition: box-shadow 0.18s, border 0.18s;
+  transition: all 0.5s ease;
+  transform: translateY(50px);
+  opacity: 0;
+  animation: cardSlideUp 0.7s ease-out forwards;
+}
+
+.feature-card--main:nth-child(1) { animation-delay: 0.1s; }
+.feature-card--main:nth-child(2) { animation-delay: 0.2s; }
+.feature-card--main:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes cardSlideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 .feature-card--main:hover {
-  border-color: #2563eb;
-  box-shadow: 0 6px 32px 0 rgba(37,99,235,0.09);
+  border-color: rgb(37, 99, 235);
+  box-shadow: 0 10px 32px 0 rgba(37,99,235,0.15);
+  transform: translateY(-10px);
 }
 
 .feature-card-icon {
   background: #e0e7ff;
   border-radius: 12px;
-  width: 38px;
-  height: 38px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.1rem;
+  transition: all 0.3s ease;
 }
 
 .feature-card-icon img {
   width: 28px;
   height: 28px;
   object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.feature-card--main:hover .feature-card-icon {
+  background: rgb(37, 99, 235);
+}
+
+.feature-card--main:hover .feature-card-icon lucide-icon,
+.feature-card--secondary:hover .feature-card-icon lucide-icon {
+  color: white;
+}
+
+.feature-card-icon lucide-icon {
+  color: rgb(37, 99, 235);
+  transition: color 0.3s ease;
 }
 
 .feature-card-title {
@@ -325,6 +316,23 @@
 .feature-card--main .feature-card-title {
   font-size: 1.25rem;
   color: #1a1a1a;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.feature-card--main .feature-card-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: rgb(37, 99, 235);
+  transition: width 0.3s ease;
+}
+
+.feature-card--main:hover .feature-card-title::after {
+  width: 50px;
 }
 
 .feature-card-desc {
@@ -349,18 +357,54 @@
   box-shadow: none;
   padding: 2rem 2rem 1.6rem 2rem;
   box-sizing: border-box;
+  transform: translateY(30px);
+  opacity: 0;
+  animation: secondaryCardSlideUp 0.5s ease-out forwards;
+}
+
+.feature-card--secondary:nth-child(1) { animation-delay: 0.3s; }
+.feature-card--secondary:nth-child(2) { animation-delay: 0.4s; }
+.feature-card--secondary:nth-child(3) { animation-delay: 0.5s; }
+.feature-card--secondary:nth-child(4) { animation-delay: 0.6s; }
+.feature-card--secondary:nth-child(5) { animation-delay: 0.7s; }
+.feature-card--secondary:nth-child(6) { animation-delay: 0.8s; }
+
+@keyframes secondaryCardSlideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.feature-card--secondary:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
 }
 
 .feature-card--secondary .feature-card-icon {
+  background: rgba(37, 99, 235, 0.1);
   margin-bottom: 1.1rem;
+  width: 40px;
+  height: 40px;
+}
+
+.feature-card--secondary:hover .feature-card-icon {
+  background: rgba(37, 99, 235, 0.2);
 }
 
 .feature-card--secondary .feature-card-title {
   margin-bottom: 0.55rem;
+  font-size: 1.15rem;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.feature-card--secondary:hover .feature-card-title {
+  color: rgb(37, 99, 235);
 }
 
 .feature-card--secondary .feature-card-desc {
   margin-bottom: 0;
+  font-size: 0.95rem;
+  color: #666;
 }
 
 @media (max-width: 1100px) {
@@ -443,5 +487,20 @@
   
   .stats {
     justify-content: center;
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

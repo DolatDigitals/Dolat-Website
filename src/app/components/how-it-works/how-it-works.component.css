@@ -1,0 +1,495 @@
+/* Modern How It Works Section with new side-by-side layout */
+.how-it-works-section {
+  padding: 6rem 0 4rem 0;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+/* Background glow */
+.how-it-works-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: -10;
+  margin: auto;
+  height: 310px;
+  width: 310px;
+  border-radius: 50%;
+  background-color: rgba(37, 99, 235, 0.1);
+  filter: blur(100px);
+}
+
+/* Badge Pill Styling */
+.how-it-works-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 auto 1.5rem;
+  width: fit-content;
+  border-radius: 9999px;
+  border: 1px solid #e2e8f0;
+  background-color: rgba(241, 245, 249, 0.7);
+  padding: 0.25rem 1rem;
+}
+
+.how-it-works-badge-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #3b82f6;
+}
+
+.how-it-works-badge svg.lucide-footprints {
+  color: #3b82f6; /* Tailwind blue-500, matches badge text */
+  stroke: currentColor;
+  fill: none;
+  /* Optionally add a drop shadow for emphasis */
+  filter: drop-shadow(0 1px 4px rgba(59, 130, 246, 0.15));
+}
+
+/* Section Title and Subtitle */
+.how-it-works-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #334155;
+  letter-spacing: -1px;
+}
+
+.how-it-works-subtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+  max-width: 42rem;
+  margin: 0 auto 4rem;
+}
+
+/* Main Content Layout */
+.how-it-works-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Continuous central divider line */
+.central-divider-line {
+  display: none;
+  width: 3px;
+}
+
+@media (min-width: 992px) {
+  .central-divider-line {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, #3b82f6 60%, rgba(59, 130, 246, 0.1));
+    z-index: 1;
+    height: 100%;
+  }
+}
+
+.how-it-works-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-bottom: 5rem;
+  position: relative;
+}
+
+/* We can remove the individual divider line styling */
+.divider-line {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .how-it-works-row {
+    flex-direction: row;
+    gap: 6rem;
+    justify-content: space-between;
+  }
+  
+  .how-it-works-row > div:not(.divider-line):not(.central-divider-line) {
+    width: 48%;
+  }
+  
+  /* Make sure the reverse class actually reverses the order */
+  .how-it-works-row.reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+/* Project Details Card */
+.project-details-card {
+  background-color: #f1f5f9;
+  border: 1px dashed #cae3ff;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: left;
+}
+
+.details-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 1.5rem;
+}
+
+.detail-item {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.bullet-point {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #3b82f6;
+  border-radius: 50%;
+  margin-top: 0.5rem;
+  flex-shrink: 0;
+}
+
+.detail-content {
+  flex: 1;
+}
+
+.detail-title {
+  font-size: 14px;  
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: #1e293b;
+}
+
+.detail-text {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Step Description Styling */
+.step-description {
+  text-align: left;
+}
+
+.step-number-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.step-number-badge span:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: rgb(37, 99, 235);
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 50%;
+  box-shadow: 0 4px 24px 0 rgba(37,99,235,0.18), 0 2px 8px 0 rgba(0,0,0,0.08);
+}
+
+.pencil-emoji, .crystal-emoji, .package-emoji {
+  font-size: 0.5rem;
+}
+
+.pencil-emoji img,
+.crystal-emoji img,
+.package-emoji img {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
+.step-heading {
+  font-size: 24px ;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.step-text {
+  color: #475569;
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+.free-support {
+  color: #3b82f6;
+  font-weight: 500;
+  margin-top: 1rem;
+  font-size: 1.125rem;
+}
+
+/* Development Progress Card */
+.development-progress-card {
+  background-color: #f1f5f9;
+  border: 1px dashed #cae3ff;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: left;
+}
+
+.progress-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 1.5rem;
+}
+
+.progress-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.progress-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #e0f2fe;
+  border-radius: 50%;
+  font-size: 1.25rem;
+}
+
+.progress-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress-labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.progress-labels span:first-child {
+  font-weight: 500;
+  color: #1e293b;
+  font-size: 14px;
+}
+
+.progress-labels .subtext {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.progress-status {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+.progress-status.completed {
+  background-color: #22c55e;
+}
+
+.progress-status.in-progress {
+  background-color: #3b82f6;
+}
+
+.progress-status.pending {
+  background-color: #94a3b8;
+}
+
+/* Project Deliverables Card */
+.project-deliverables-card {
+  background-color: #f1f5f9;
+  border: 1px dashed #cae3ff; 
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: left;
+}
+
+.deliverables-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 1.5rem;
+}
+
+.deliverable-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.deliverable-label {
+  color: #64748b;
+  font-size: 14px;
+  margin-right: 2rem;
+  min-width: 140px;
+}
+
+.deliverable-value {
+  font-size: 14px;
+  color: #1e293b;
+  font-weight: 500;
+  flex-shrink: 0;
+  margin-left: 3rem;
+}
+
+/* Step description styling for the 3rd step */
+.step-description-right {
+  text-align: left;
+}
+
+@media (min-width: 992px) {
+  /* Specific styling for the third step */
+  .step-03-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+  
+  .step-03-row .step-description-right,
+  .step-03-row .project-deliverables-card {
+    width: 48%;
+  }
+  
+  /* Apply all step-description styles to step-description-right */
+  .step-description-right {
+    text-align: left;
+  }
+  
+  .step-description-right .step-number-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .step-description-right .step-number-badge span:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background-color: #3b82f6;
+    color: white;
+    font-weight: 700;
+    font-size: 1.25rem;
+    border-radius: 50%;
+  }
+
+  .step-description-right .step-heading {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+  }
+
+  .step-description-right .step-text {
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  .step-description-right .free-support {
+    color: #3b82f6;
+    font-weight: 500;
+    margin-top: 1rem;
+    font-size: 1.125rem;
+  }
+}
+
+/* Utility classes for responsive visibility */
+.desktop-only {
+  display: block;
+}
+.mobile-only {
+  display: none;
+}
+@media (max-width: 640px) {
+  .desktop-only {
+    display: none !important;
+  }
+  .mobile-only {
+    display: block !important;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .how-it-works-section {
+    padding: 2.5rem 0 1.5rem 0;
+  }
+  .how-it-works-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .how-it-works-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+  .how-it-works-content {
+    padding: 0 0.5rem;
+  }
+  .how-it-works-row {
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .project-details-card,
+  .development-progress-card,
+  .project-deliverables-card {
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+  .detail-title,
+  .detail-text,
+  .deliverable-label,
+  .deliverable-value,
+  .progress-labels span,
+  .progress-labels .subtext {
+    font-size: 12px;
+  }
+  .step-heading {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+  }
+  .step-text, .free-support {
+    font-size: 0.92rem;
+  }
+  .step-number-badge span:first-child {
+    font-size: 1rem;
+    width: 2rem;
+    height: 2rem;
+  }
+  .pencil-emoji img,
+  .crystal-emoji img,
+  .package-emoji img {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 0.25rem;
+  }
+  .progress-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.1rem;
+  }
+  .central-divider-line {
+    display: none !important;
+  }
+}

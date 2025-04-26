@@ -472,6 +472,46 @@
     height: 220px;
   }
   .connect-social-grid {
+    width: 100%;
+    height: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 0.3rem;
+    padding: 0.4rem 0.1rem;
+    background: none;
+    box-shadow: none;
+  }
+  .connect-social-item {
+    width: 42px;
+    height: 42px;
+    font-size: 0.96rem;
+    flex-direction: row;
+    gap: 0.3rem;
+    padding: 0.2rem 0.3rem;
+    border-radius: 0.7rem;
+    box-shadow: 0 1px 4px 0 rgba(37,99,235,0.06);
+  }
+  .connect-social-item i {
+    font-size: 1.15rem;
+    margin-right: 0.18rem;
+  }
+  .connect-social-item span {
+    font-size: 0.87rem;
+    margin-top: 0;
+    color: #222;
+    font-weight: 500;
+    display: none !important;
+  }
+  .connect-form {
+    padding: 1.1rem 0.6rem 0.7rem 0.6rem;
+  }
+  .connect-pulse {
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(ellipse at center, #2563eb18 0%, #e6eafd 60%, transparent 100%);
+    opacity: 0.45;
+  }
+  .connect-social-grid {
     width: 120px;
     height: 120px;
     gap: 0.6rem;
@@ -480,9 +520,6 @@
     width: 45px;
     height: 45px;
     font-size: 1rem;
-  }
-  .connect-form {
-    padding: 1.1rem 0.6rem 0.7rem 0.6rem;
   }
 }
 

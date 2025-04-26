@@ -1,0 +1,33 @@
+<section class="why-choose-us-section">
+  <div class="why-choose-us-container">
+    <div class="badge-container">
+      <div class="pill-badge">
+        <lucide-icon [img]="BrainIcon" class="badge-icon" [size]="16"></lucide-icon>
+        Why Choose Us
+      </div>
+    </div>
+    
+    <h2 class="main-heading">Expert Project Development</h2>
+    <p class="main-subtitle">We deliver high-quality academic projects with guaranteed success</p>
+    
+    <div class="features-grid">
+      <!-- First row with 3 main features -->
+      <div class="feature-card main-feature" *ngFor="let feature of mainFeatures">
+        <div class="icon-container {{feature.iconClass}}">
+          <lucide-icon [img]="feature.icon" [size]="24"></lucide-icon>
+        </div>
+        <h3 class="feature-title">{{feature.title}}</h3>
+        <p class="feature-desc">{{feature.description}}</p>
+      </div>
+      
+      <!-- Second and third rows with 6 additional features -->
+      <div class="feature-card secondary-feature" *ngFor="let feature of secondaryFeatures">
+        <div class="icon-container {{feature.iconClass}}">
+          <lucide-icon [img]="feature.icon" [size]="20"></lucide-icon>
+        </div>
+        <h3 class="feature-title">{{feature.title}}</h3>
+        <p class="feature-desc">{{feature.description}}</p>
+      </div>
+    </div>
+  </div>
+</section>

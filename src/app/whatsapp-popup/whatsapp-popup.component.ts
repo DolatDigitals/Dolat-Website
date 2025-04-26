@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
     <div class="whatsapp-popup" [class.show]="show">
-      <a href="https://wa.me/+919876543210" target="_blank" class="whatsapp-button" rel="noopener">
+      <a href="https://wa.me/916378065948?text=I%E2%80%99m%20interested%20in%20learning%20more%20about%20your%20services.%20Could%20you%20please%20share%20some%20details%3F" target="_blank" class="whatsapp-button" rel="noopener">
         <div class="whatsapp-icon">
           <img src="image/WhatsApp.svg.webp" alt="WhatsApp" width="32" height="32" />
           <span class="notification-badge">1</span>
