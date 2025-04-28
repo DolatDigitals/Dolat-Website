@@ -6,10 +6,11 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
   private isBrowser: boolean;
+  menuOpen = false;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -23,5 +24,9 @@ export class HeaderComponent implements OnInit {
     
     // Initialize any header-related functionality
     console.log('Header component initialized');
+  }
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
 }

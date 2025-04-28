@@ -492,4 +492,15 @@
   .central-divider-line {
     display: none !important;
   }
+  .step-description .step-number-badge,
+  .step-description .step-heading,
+  .step-description .step-text {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
+  .step-description .step-number-badge span:first-child {
+    margin-left: 37px;
+  }
 }

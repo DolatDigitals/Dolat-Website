@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LucideAngularModule, BrainIcon, ShieldAlertIcon, DatabaseIcon, MessageSquareCodeIcon, TimerIcon, GraduationCapIcon, RefreshCcwIcon, CheckCircleIcon, ShieldIcon } from 'lucide-angular';
+import { LucideAngularModule, BrainIcon, ShieldAlertIcon, DatabaseIcon, MessageSquareCodeIcon, TimerIcon, GraduationCapIcon, RefreshCcwIcon, CheckCircleIcon, ShieldIcon, HandHeartIcon } from 'lucide-angular';
 
 interface Feature {
   icon: any;
@@ -26,6 +26,7 @@ export class WhyChooseUsComponent {
   readonly RefreshCcwIcon = RefreshCcwIcon;
   readonly CheckCircleIcon = CheckCircleIcon;
   readonly ShieldIcon = ShieldIcon;
+  readonly HandHeartIcon = HandHeartIcon;
 
   mainFeatures: Feature[] = [
     {
@@ -35,9 +36,9 @@ export class WhyChooseUsComponent {
       iconClass: 'icon-brain'
     },
     {
-      icon: this.ShieldAlertIcon,
-      title: 'Cybersecurity',
-      description: 'Network Security, Penetration Testing, Cryptography, and Security Analysis projects with industry tools.',
+      icon: this.HandHeartIcon,
+      title: 'Digital Marketing',
+      description: 'Social Media Marketing, Search Engine Optimization (SEO), Content Creation, Campaign Management, and Marketing Analytics projects using industry-standard tools.',
       iconClass: 'icon-shield'
     },
     {
