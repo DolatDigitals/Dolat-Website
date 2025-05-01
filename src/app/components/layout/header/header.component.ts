@@ -1,4 +1,4 @@
-import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject, HostListener } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -11,6 +11,13 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 export class HeaderComponent implements OnInit {
   private isBrowser: boolean;
   menuOpen = false;
+  isShrunk = false;
+  navItems = [
+    { label: 'Home', href: '#' },
+    { label: 'About Us', href: '#about' },
+    { label: 'Services', href: '#why-choose-us' },
+    { label: 'Contact Us', href: '#contact' },
+  ];
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -28,5 +35,10 @@ export class HeaderComponent implements OnInit {
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isShrunk = window.scrollY > 20;
   }
 }

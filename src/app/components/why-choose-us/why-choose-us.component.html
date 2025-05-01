@@ -1,4 +1,4 @@
-<section class="why-choose-us-section">
+<section class="why-choose-us-section animate-on-scroll">
   <div class="why-choose-us-container">
     <div class="badge-container">
       <div class="pill-badge">
@@ -12,7 +12,7 @@
     
     <div class="features-grid">
       <!-- First row with 3 main features -->
-      <div class="feature-card main-feature" *ngFor="let feature of mainFeatures">
+      <div class="feature-card main-feature" *ngFor="let feature of mainFeatures; let i = index" [class.visible]="mainFeaturesVisible[i]">
         <div class="icon-container {{feature.iconClass}}">
           <lucide-icon [img]="feature.icon" [size]="24"></lucide-icon>
         </div>
@@ -21,7 +21,7 @@
       </div>
       
       <!-- Second and third rows with 6 additional features -->
-      <div class="feature-card secondary-feature" *ngFor="let feature of secondaryFeatures">
+      <div class="feature-card secondary-feature" *ngFor="let feature of secondaryFeatures; let i = index" [class.visible]="secondaryFeaturesVisible[i]">
         <div class="icon-container {{feature.iconClass}}">
           <lucide-icon [img]="feature.icon" [size]="20"></lucide-icon>
         </div>

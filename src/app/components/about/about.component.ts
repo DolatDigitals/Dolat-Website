@@ -55,6 +55,20 @@ export class AboutComponent implements OnInit, AfterViewInit {
     
     // Setup scroll-triggered animations
     this.setupScrollAnimations();
+
+    // Animate About section on scroll
+    const aboutSection = this.elementRef.nativeElement.querySelector('.about-section');
+    if (aboutSection) {
+      this.intersectionObserverService.createAndObserve(
+        [aboutSection],
+        (entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        },
+        { threshold: 0.15 }
+      );
+    }
   }
   
   private setupScrollAnimations(): void {

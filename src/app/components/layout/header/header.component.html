@@ -1,7 +1,7 @@
-<header class="header">
+<header class="header" [class.shrunk]="isShrunk">
   <div class="container">
     <div class="logo">
-      <a href="#">Dolat Digital</a>
+      <a href="#" [class.shrunk]="isShrunk">Dolat Digital</a>
     </div>
     <button class="hamburger" aria-label="Open menu" (click)="toggleMenu()">
       <span></span>
@@ -10,10 +10,9 @@
     </button>
     <nav class="nav" [class.open]="menuOpen">
       <ul class="nav-list">
-        <li class="nav-item"><a href="#" >Home</a></li>
-        <li class="nav-item"><a href="#about">About Us</a></li>
-        <li class="nav-item"><a href="#why-choose-us">Services</a></li>
-        <li class="nav-item"><a href="#contact">Contact Us</a></li>
+        <li class="nav-item" *ngFor="let item of navItems">
+          <a [href]="item.href" [class.shrunk]="isShrunk">{{item.label}}</a>
+        </li>
       </ul>
     </nav>
     <div class="header-actions">

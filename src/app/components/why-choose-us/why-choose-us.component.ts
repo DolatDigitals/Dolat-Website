@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, NgZone, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { LucideAngularModule, BrainIcon, ShieldAlertIcon, DatabaseIcon, MessageSquareCodeIcon, TimerIcon, GraduationCapIcon, RefreshCcwIcon, CheckCircleIcon, ShieldIcon, HandHeartIcon } from 'lucide-angular';
 
 interface Feature {
@@ -16,7 +17,7 @@ interface Feature {
   templateUrl: './why-choose-us.component.html',
   styleUrls: ['./why-choose-us.component.css']
 })
-export class WhyChooseUsComponent {
+export class WhyChooseUsComponent implements AfterViewInit {
   readonly BrainIcon = BrainIcon;
   readonly ShieldAlertIcon = ShieldAlertIcon;
   readonly DatabaseIcon = DatabaseIcon;
@@ -87,4 +88,55 @@ export class WhyChooseUsComponent {
       iconClass: 'icon-shieldlock'
     }
   ];
+
+  mainFeaturesVisible: boolean[] = [false, false, false];
+  secondaryFeaturesVisible: boolean[] = Array(this.secondaryFeatures.length).fill(false);
+
+  constructor(private el: ElementRef, private ngZone: NgZone, @Inject(PLATFORM_ID) private platformId: Object) {}
+
+  ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      // Skip animation logic during SSR
+      return;
+    }
+    // Animate section itself
+    const section = this.el.nativeElement.querySelector('.why-choose-us-section');
+    if (section) {
+      this.observeAndReveal(section, () => {
+        section.classList.add('visible');
+      });
+    }
+
+    // Animate main features with stagger
+    const mainCards = this.el.nativeElement.querySelectorAll('.feature-card.main-feature');
+    mainCards.forEach((card: Element, i: number) => {
+      this.observeAndReveal(card, () => {
+        this.ngZone.run(() => this.mainFeaturesVisible[i] = true);
+      }, i * 120);
+    });
+
+    // Animate secondary features with stagger
+    const secondaryCards = this.el.nativeElement.querySelectorAll('.feature-card.secondary-feature');
+    secondaryCards.forEach((card: Element, i: number) => {
+      this.observeAndReveal(card, () => {
+        this.ngZone.run(() => this.secondaryFeaturesVisible[i] = true);
+      }, (i + mainCards.length) * 90);
+    });
+  }
+
+  private observeAndReveal(element: Element, callback: () => void, delay = 0) {
+    if (!('IntersectionObserver' in window)) {
+      callback();
+      return;
+    }
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(callback, delay);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.13 });
+    observer.observe(element);
+  }
 }
